@@ -5,7 +5,7 @@ FLUTTER=$(shell which flutter)
 build:
 	$(FLUTTER) pub get
 	mkdir -p docs
-	$(FLUTTER) build web --release --base-href '/'
+	$(FLUTTER) build web --release
 	mv build/web/* docs/
 
 clean:
