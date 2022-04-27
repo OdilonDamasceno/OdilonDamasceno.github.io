@@ -4,9 +4,12 @@ FLUTTER=$(shell which flutter)
 
 build:
 	$(FLUTTER) pub get
-	mkdir -p docs
+	mkdir -p docs/
 	$(FLUTTER) build web --release
 	mv build/web/* docs/
+
+	## Update base href to ./
+	sed "s/<base href=\"\/\">/<base href=\".\/\">/g" -i docs/index.html
 
 clean:
 	$(FLUTTER) clean
